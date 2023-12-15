@@ -1,0 +1,18 @@
+*{
+    margin:20px;
+}
+
+.foto{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 2px solid #000;
+}
+#clickeame{
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid #000;
+    cursor: pointer;
+}
