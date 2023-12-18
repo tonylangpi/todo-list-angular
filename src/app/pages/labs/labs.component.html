@@ -16,8 +16,8 @@
 <hr>
 <div>
   <h2>Persona</h2>
-  <p>{{persona.nombre}}</p>
-  <p>{{persona.edad}}</p>
+  <p>{{persona().nombre}}</p>
+  <p>{{persona().edad}}</p>
 </div>
 <!-- es una property binding -->
 <hr>
@@ -27,3 +27,19 @@
 <input type="text" (change)="onchangeHandler($event)">
 
 <input type="number" (keydown)="kedown($event)">
+
+<hr>
+<div *ngIf="1 == 1">
+  <h2>Mostrar</h2>
+  <p>Este parrafo se muestra si mostrar es true</p>
+</div>
+<input type="number" [value]="persona().edad" (change)="changeAge($event)">
+<div *ngIf="persona().edad  > 18; else template">
+   <h3>ESTA PERSONA ES MAYOR SI PUEDE PASAR TIENE {{persona().edad}}</h3>
+</div>
+<ng-template #template>
+  <h2>ERES MENOR DE EDAD</h2>
+</ng-template>
+<hr>
+<input type="color" [formControl]="colorCtrl">
+<p>Color seleccionado : {{colorCtrl.value}}</p>

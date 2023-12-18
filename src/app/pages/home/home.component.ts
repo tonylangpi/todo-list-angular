@@ -1,10 +1,11 @@
 import { Component,signal } from '@angular/core';
-import { NgFor, CommonModule } from '@angular/common';
+import { NgFor, CommonModule, NgIf } from '@angular/common';
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Tarea } from '../../models/tareas.model';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NgFor, CommonModule],
+  imports: [NgFor, CommonModule, NgIf, ReactiveFormsModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -31,10 +32,16 @@ export class HomeComponent {
       completed: false
     }
   ]);
-  changeHandler(event: Event) {
-    const input =  event.target as HTMLInputElement;
-    const value = input.value;
-    this.addTarea(value);
+  changeHandler() {
+    if(this.tareaCtrl.valid){
+      const titulo = this.tareaCtrl.value.trim();
+      if(titulo !== ''){
+        this.addTarea(titulo);
+        this.tareaCtrl.reset();
+      }
+    }else{
+      alert('El campo no cumple con las validaciones');
+    }
   }
   //metodo que se encarga de agregar una tarea
   addTarea(titulo: string) {
@@ -66,4 +73,13 @@ export class HomeComponent {
       )
     );
   }
+  //control del input del formulario con reactive forms
+  //para agregar una tarea
+  tareaCtrl = new FormControl('', 
+    {
+      nonNullable: true,
+      validators: [Validators.required, Validators.minLength(3)]  
+    }
+  );
+
 }
