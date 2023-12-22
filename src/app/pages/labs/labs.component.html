@@ -1,11 +1,12 @@
 
-<div>
+<!-- <div>
     <h1>MI APP EN ANGULAR</h1>
     <p>{{title}}</p>
     <ul>
-      <li *ngFor="let task of lista(); index as i">
-       {{i}} . {{task}}
-      </li>
+      
+      @for(item of lista(); track item){
+        <li>{{item}}</li>
+      }
     </ul>
     <p>Size del array: {{lista().length}}</p>
   </div>
@@ -19,7 +20,7 @@
   <p>{{persona().nombre}}</p>
   <p>{{persona().edad}}</p>
 </div>
-<!-- es una property binding -->
+
 <hr>
 <button id="clickeame" (click)="clickHandler()">CLICK</button>
 <button id="clickeame" (dblclick)="clickHandler()">DOUBLE CLICK</button>
@@ -43,3 +44,26 @@
 <hr>
 <input type="color" [formControl]="colorCtrl">
 <p>Color seleccionado : {{colorCtrl.value}}</p>
+<svg>
+  <g>
+    <rect [attr.fill]="colorCtrl.value" x="10" y="10" width="100" height="100"></rect>
+  </g>
+</svg>
+<hr>
+<input type="number" [formControl]="size">
+<span class="box" [style.width.px]="size.value"></span>
+
+<hr> 
+<img [src]="url" alt="dev python tiangolo" > -->
+<div class="contenedor">
+  @for(item of productos; track item.id){
+    <div class="card">
+      <img src={{item.image}} alt="Avatar"  style="width:100%">
+      <div class="container">
+        <h4><b>{{item.title}}</b></h4> 
+        <p>{{item.description}}</p> 
+      </div>
+    </div>
+  }
+</div>
+

@@ -1,1 +1,9 @@
+<header>
+    <nav>
+        <ul>
+		<li><a routerLink="home" [ngClass]="{active: menuOption == 'Home'}" (click)="onOption('Home')">App Tareas</a></li>
+		<li><a routerLink="labs" [ngClass]="{active: menuOption == 'Labs'}" (click)="onOption('Labs')">Laboratorios</a></li>
+	 </ul>
+    </nav>
+</header>
 <router-outlet></router-outlet>
